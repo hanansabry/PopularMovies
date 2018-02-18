@@ -1,3 +1,114 @@
 <resources>
     <string name="app_name">Popular Movies</string>
+
+    <string name="movie_example_data">{\"page\":1,\"total_results\":8108,\"total_pages\":406,\"results\":
+        [{\"vote_count\":1051,\"id\":19404,\"video\":false,\"vote_average\":9.1,\"title\":
+        \"Dilwale Dulhania Le Jayenge\",\"popularity\":16.553605,\"poster_path\"
+        :\"\/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg\",\"original_language\":\"hi\",\"original_title\"
+        :\"Dilwale Dulhania Le Jayenge\",\"genre_ids\":[35,18,10749],\"backdrop_path\":
+        \"\/nl79FQ8xWZkhL3rDr1v2RFFR6J0.jpg\",\"adult\":false,\"overview\":\"Raj is a rich, carefree,
+        happy-go-lucky second generation NRI. Simran is the daughter of Chaudhary Baldev Singh,
+        who in spite of being an NRI is very strict about adherence to Indian values.
+        Simran has left for India to be married to her childhood fiancé. Raj leaves for India with a mission at his hands,
+        to claim his lady love under the noses of her whole family. Thus begins a saga.\",\"release_date\"
+        :\"1995-10-20\"},{\"vote_count\":81,\"id\":20532,\"video\":false,\"vote_average\":8.7,\"title\"
+        :\"Sansho the Bailiff\",\"popularity\":10.957644,\"poster_path\":\"\/deBjt3LT3UQHRXiNX1fu28lAtK6.jpg\",
+        \"original_language\":\"ja\",\"original_title\":\"山椒大夫\",\"genre_ids\":[18],\"backdrop_path\":
+        \"\/keaFMNUr1OpdHzPWJ0qeDP8hrO8.jpg\",\"adult\":false,\"overview\":\"In medieval Japan a compassionate governor is
+        sent into exile. His wife and children try to join him, but are separated, and the children grow up amid suffering
+        and oppression.\",\"release_date\":\"1954-03-31\"},{\"vote_count\":89,\"id\":452522,\"video\":false,
+        \"vote_average\":8.7,\"title\":\"Twin Peaks\",\"popularity\":11.729221,\"poster_path\":
+        \"\/zQsEi6096L7PvowV39dtdqdW16f.jpg\",\"original_language\":\"en\",\"original_title\":\"Twin Peaks\",\"genre_ids\"
+        :[18,9648],\"backdrop_path\":\"\/xqjGKLwLZeujg4fiBTOqhZkoL31.jpg\",\"adult\":false,\"overview\":
+        \"Standalone version of the series pilot with an alternate, closed ending, produced for the European VHS market.
+        \",\"release_date\":\"1989-12-31\"},{\"vote_count\":9494,\"id\":278,\"video\":false,\"vote_average\":8.5,\"title\"
+        :\"The Shawshank Redemption\",\"popularity\":34.158928,\"poster_path\":\"\/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg\",
+        \"original_language\":\"en\",\"original_title\":\"The Shawshank Redemption\",\"genre_ids\":[18,80],\"backdrop_path\"
+        :\"\/xBKGJQsAIeweesB79KC89FpBrVr.jpg\",\"adult\":false,\"overview\":\"Framed in the 1940s for the double murder of his
+        wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison,
+        where he puts his accounting skills to work for an amoral warden. During his long stretch in prison,
+        Dufresne comes to be admired by the other inmates -- including an older prisoner named Red --
+        for his integrity and unquenchable sense of hope.\",\"release_date\":\"1994-09-23\"},
+        {\"vote_count\":1051,\"id\":19404,\"video\":false,\"vote_average\":9.1,\"title\":
+        \"Dilwale Dulhania Le Jayenge\",\"popularity\":16.553605,\"poster_path\"
+        :\"\/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg\",\"original_language\":\"hi\",\"original_title\"
+        :\"Dilwale Dulhania Le Jayenge\",\"genre_ids\":[35,18,10749],\"backdrop_path\":
+        \"\/nl79FQ8xWZkhL3rDr1v2RFFR6J0.jpg\",\"adult\":false,\"overview\":\"Raj is a rich, carefree,
+        happy-go-lucky second generation NRI. Simran is the daughter of Chaudhary Baldev Singh,
+        who in spite of being an NRI is very strict about adherence to Indian values.
+        Simran has left for India to be married to her childhood fiancé. Raj leaves for India with a mission at his hands,
+        to claim his lady love under the noses of her whole family. Thus begins a saga.\",\"release_date\"
+        :\"1995-10-20\"},{\"vote_count\":81,\"id\":20532,\"video\":false,\"vote_average\":8.7,\"title\"
+        :\"Sansho the Bailiff\",\"popularity\":10.957644,\"poster_path\":\"\/deBjt3LT3UQHRXiNX1fu28lAtK6.jpg\",
+        \"original_language\":\"ja\",\"original_title\":\"山椒大夫\",\"genre_ids\":[18],\"backdrop_path\":
+        \"\/keaFMNUr1OpdHzPWJ0qeDP8hrO8.jpg\",\"adult\":false,\"overview\":\"In medieval Japan a compassionate governor is
+        sent into exile. His wife and children try to join him, but are separated, and the children grow up amid suffering
+        and oppression.\",\"release_date\":\"1954-03-31\"},{\"vote_count\":89,\"id\":452522,\"video\":false,
+        \"vote_average\":8.7,\"title\":\"Twin Peaks\",\"popularity\":11.729221,\"poster_path\":
+        \"\/zQsEi6096L7PvowV39dtdqdW16f.jpg\",\"original_language\":\"en\",\"original_title\":\"Twin Peaks\",\"genre_ids\"
+        :[18,9648],\"backdrop_path\":\"\/xqjGKLwLZeujg4fiBTOqhZkoL31.jpg\",\"adult\":false,\"overview\":
+        \"Standalone version of the series pilot with an alternate, closed ending, produced for the European VHS market.
+        \",\"release_date\":\"1989-12-31\"},{\"vote_count\":9494,\"id\":278,\"video\":false,\"vote_average\":8.5,\"title\"
+        :\"The Shawshank Redemption\",\"popularity\":34.158928,\"poster_path\":\"\/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg\",
+        \"original_language\":\"en\",\"original_title\":\"The Shawshank Redemption\",\"genre_ids\":[18,80],\"backdrop_path\"
+        :\"\/xBKGJQsAIeweesB79KC89FpBrVr.jpg\",\"adult\":false,\"overview\":\"Framed in the 1940s for the double murder of his
+        wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison,
+        where he puts his accounting skills to work for an amoral warden. During his long stretch in prison,
+        Dufresne comes to be admired by the other inmates -- including an older prisoner named Red --
+        for his integrity and unquenchable sense of hope.\",\"release_date\":\"1994-09-23\"},
+        {\"vote_count\":1051,\"id\":19404,\"video\":false,\"vote_average\":9.1,\"title\":
+        \"Dilwale Dulhania Le Jayenge\",\"popularity\":16.553605,\"poster_path\"
+        :\"\/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg\",\"original_language\":\"hi\",\"original_title\"
+        :\"Dilwale Dulhania Le Jayenge\",\"genre_ids\":[35,18,10749],\"backdrop_path\":
+        \"\/nl79FQ8xWZkhL3rDr1v2RFFR6J0.jpg\",\"adult\":false,\"overview\":\"Raj is a rich, carefree,
+        happy-go-lucky second generation NRI. Simran is the daughter of Chaudhary Baldev Singh,
+        who in spite of being an NRI is very strict about adherence to Indian values.
+        Simran has left for India to be married to her childhood fiancé. Raj leaves for India with a mission at his hands,
+        to claim his lady love under the noses of her whole family. Thus begins a saga.\",\"release_date\"
+        :\"1995-10-20\"},{\"vote_count\":81,\"id\":20532,\"video\":false,\"vote_average\":8.7,\"title\"
+        :\"Sansho the Bailiff\",\"popularity\":10.957644,\"poster_path\":\"\/deBjt3LT3UQHRXiNX1fu28lAtK6.jpg\",
+        \"original_language\":\"ja\",\"original_title\":\"山椒大夫\",\"genre_ids\":[18],\"backdrop_path\":
+        \"\/keaFMNUr1OpdHzPWJ0qeDP8hrO8.jpg\",\"adult\":false,\"overview\":\"In medieval Japan a compassionate governor is
+        sent into exile. His wife and children try to join him, but are separated, and the children grow up amid suffering
+        and oppression.\",\"release_date\":\"1954-03-31\"},{\"vote_count\":89,\"id\":452522,\"video\":false,
+        \"vote_average\":8.7,\"title\":\"Twin Peaks\",\"popularity\":11.729221,\"poster_path\":
+        \"\/zQsEi6096L7PvowV39dtdqdW16f.jpg\",\"original_language\":\"en\",\"original_title\":\"Twin Peaks\",\"genre_ids\"
+        :[18,9648],\"backdrop_path\":\"\/xqjGKLwLZeujg4fiBTOqhZkoL31.jpg\",\"adult\":false,\"overview\":
+        \"Standalone version of the series pilot with an alternate, closed ending, produced for the European VHS market.
+        \",\"release_date\":\"1989-12-31\"},{\"vote_count\":9494,\"id\":278,\"video\":false,\"vote_average\":8.5,\"title\"
+        :\"The Shawshank Redemption\",\"popularity\":34.158928,\"poster_path\":\"\/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg\",
+        \"original_language\":\"en\",\"original_title\":\"The Shawshank Redemption\",\"genre_ids\":[18,80],\"backdrop_path\"
+        :\"\/xBKGJQsAIeweesB79KC89FpBrVr.jpg\",\"adult\":false,\"overview\":\"Framed in the 1940s for the double murder of his
+        wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison,
+        where he puts his accounting skills to work for an amoral warden. During his long stretch in prison,
+        Dufresne comes to be admired by the other inmates -- including an older prisoner named Red --
+        for his integrity and unquenchable sense of hope.\",\"release_date\":\"1994-09-23\"},
+        {\"vote_count\":1051,\"id\":19404,\"video\":false,\"vote_average\":9.1,\"title\":
+        \"Dilwale Dulhania Le Jayenge\",\"popularity\":16.553605,\"poster_path\"
+        :\"\/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg\",\"original_language\":\"hi\",\"original_title\"
+        :\"Dilwale Dulhania Le Jayenge\",\"genre_ids\":[35,18,10749],\"backdrop_path\":
+        \"\/nl79FQ8xWZkhL3rDr1v2RFFR6J0.jpg\",\"adult\":false,\"overview\":\"Raj is a rich, carefree,
+        happy-go-lucky second generation NRI. Simran is the daughter of Chaudhary Baldev Singh,
+        who in spite of being an NRI is very strict about adherence to Indian values.
+        Simran has left for India to be married to her childhood fiancé. Raj leaves for India with a mission at his hands,
+        to claim his lady love under the noses of her whole family. Thus begins a saga.\",\"release_date\"
+        :\"1995-10-20\"},{\"vote_count\":81,\"id\":20532,\"video\":false,\"vote_average\":8.7,\"title\"
+        :\"Sansho the Bailiff\",\"popularity\":10.957644,\"poster_path\":\"\/deBjt3LT3UQHRXiNX1fu28lAtK6.jpg\",
+        \"original_language\":\"ja\",\"original_title\":\"山椒大夫\",\"genre_ids\":[18],\"backdrop_path\":
+        \"\/keaFMNUr1OpdHzPWJ0qeDP8hrO8.jpg\",\"adult\":false,\"overview\":\"In medieval Japan a compassionate governor is
+        sent into exile. His wife and children try to join him, but are separated, and the children grow up amid suffering
+        and oppression.\",\"release_date\":\"1954-03-31\"},{\"vote_count\":89,\"id\":452522,\"video\":false,
+        \"vote_average\":8.7,\"title\":\"Twin Peaks\",\"popularity\":11.729221,\"poster_path\":
+        \"\/zQsEi6096L7PvowV39dtdqdW16f.jpg\",\"original_language\":\"en\",\"original_title\":\"Twin Peaks\",\"genre_ids\"
+        :[18,9648],\"backdrop_path\":\"\/xqjGKLwLZeujg4fiBTOqhZkoL31.jpg\",\"adult\":false,\"overview\":
+        \"Standalone version of the series pilot with an alternate, closed ending, produced for the European VHS market.
+        \",\"release_date\":\"1989-12-31\"},{\"vote_count\":9494,\"id\":278,\"video\":false,\"vote_average\":8.5,\"title\"
+        :\"The Shawshank Redemption\",\"popularity\":34.158928,\"poster_path\":\"\/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg\",
+        \"original_language\":\"en\",\"original_title\":\"The Shawshank Redemption\",\"genre_ids\":[18,80],\"backdrop_path\"
+        :\"\/xBKGJQsAIeweesB79KC89FpBrVr.jpg\",\"adult\":false,\"overview\":\"Framed in the 1940s for the double murder of his
+        wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison,
+        where he puts his accounting skills to work for an amoral warden. During his long stretch in prison,
+        Dufresne comes to be admired by the other inmates -- including an older prisoner named Red --
+        for his integrity and unquenchable sense of hope.\",\"release_date\":\"1994-09-23\"}]}
+    </string>
 </resources>
