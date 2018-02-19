@@ -37,12 +37,7 @@ public class JsonUtils {
                 String releaseDate = moviesArray.getJSONObject(i).getString(RELEASE_DATE);
 
                 //create movie object
-                Movie movie = new Movie();
-                movie.setOriginalTitle(title);
-                movie.setPosterImage(posterPath);
-                movie.setPlotSynopsis(overview);
-                movie.setUserRatings(voteAvg);
-                movie.setReleaseDate(releaseDate);
+                Movie movie = new Movie(title, posterPath, overview, voteAvg, releaseDate);
 
                 //add the movie object to the moviesList
                 movieList.add(movie);

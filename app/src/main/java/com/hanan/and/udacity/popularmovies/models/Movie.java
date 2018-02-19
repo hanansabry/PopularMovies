@@ -1,10 +1,13 @@
 package com.hanan.and.udacity.popularmovies.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Nono on 2/18/2018.
  */
 
-public class Movie {
+public class Movie implements Parcelable {
 
     private String originalTitle;
     private String posterImage;
@@ -19,6 +22,16 @@ public class Movie {
         this.plotSynopsis = plotSynopsis;
         this.userRatings = userRatings;
         this.releaseDate = releaseDate;
+    }
+
+    //constructor used for parcel
+    public Movie(Parcel parcel) {
+        //read and set saved values from
+        originalTitle = parcel.readString();
+        posterImage = parcel.readString();
+        plotSynopsis = parcel.readString();
+        userRatings = parcel.readString();
+        releaseDate = parcel.readString();
     }
 
     public String getOriginalTitle() {
@@ -61,4 +74,34 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
+    //return the hashcode of the object
+    @Override
+    public int describeContents() {
+        return hashCode();
+    }
+
+    //write object values to parcel for storage
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        //write all properties to the parcel
+        parcel.writeString(originalTitle);
+        parcel.writeString(posterImage);
+        parcel.writeString(plotSynopsis);
+        parcel.writeString(userRatings);
+        parcel.writeString(releaseDate);
+    }
+
+    //creator - used when un-parceling our parcle (creating the object)
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+
+        @Override
+        public Movie createFromParcel(Parcel parcel) {
+            return new Movie(parcel);
+        }
+
+        @Override
+        public Movie[] newArray(int i) {
+            return new Movie[0];
+        }
+    };
 }

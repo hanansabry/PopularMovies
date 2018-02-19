@@ -21,6 +21,8 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
+    public static final String MOVIE = "Movie";
+
     private static final String POSTER_BASE_URL = "http://image.tmdb.org/t/p/";
     private static final String SIZE_W92 = "w92";
     private static final String SIZE_W154 = "w154";
@@ -54,8 +56,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         return mMoviesList.size();
     }
 
-    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView movieThumb;
+        int position;
 
         public MovieViewHolder(View itemView) {
             super(itemView);
@@ -64,16 +67,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         }
 
         public void bindMovieImagePoster() {
-            int position = getAdapterPosition();
+            position = getAdapterPosition();
             Movie movie = mMoviesList.get(position);
             String imagePath = POSTER_BASE_URL + SIZE_W185 + movie.getPosterImage();
+            movie.setPosterImage(imagePath);
             Log.d("Movie", imagePath);
             Picasso.with(mContext).load(imagePath).into(movieThumb);
         }
 
         @Override
         public void onClick(View view) {
+            Movie movie = mMoviesList.get(position);
             Intent intent = new Intent(mContext, DetailActivity.class);
+            intent.putExtra(MOVIE, movie);
             mContext.startActivity(intent);
         }
     }

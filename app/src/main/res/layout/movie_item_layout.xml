@@ -7,7 +7,7 @@
         android:id="@+id/movie_thumb"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         android:scaleType="centerCrop" />
 
 </FrameLayout>
