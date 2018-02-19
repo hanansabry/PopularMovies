@@ -1,12 +1,14 @@
 package com.hanan.and.udacity.popularmovies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.hanan.and.udacity.popularmovies.models.Movie;
 import com.squareup.picasso.Picasso;
@@ -52,12 +54,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         return mMoviesList.size();
     }
 
-    class MovieViewHolder extends RecyclerView.ViewHolder {
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView movieThumb;
 
         public MovieViewHolder(View itemView) {
             super(itemView);
             movieThumb = itemView.findViewById(R.id.movie_thumb);
+            itemView.setOnClickListener(this);
         }
 
         public void bindMovieImagePoster() {
@@ -66,6 +69,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             String imagePath = POSTER_BASE_URL + SIZE_W185 + movie.getPosterImage();
             Log.d("Movie", imagePath);
             Picasso.with(mContext).load(imagePath).into(movieThumb);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(mContext, DetailActivity.class);
+            mContext.startActivity(intent);
         }
     }
 }

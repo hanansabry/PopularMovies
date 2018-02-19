@@ -111,4 +111,8 @@
         Dufresne comes to be admired by the other inmates -- including an older prisoner named Red --
         for his integrity and unquenchable sense of hope.\",\"release_date\":\"1994-09-23\"}]}
     </string>
+    <string name="top_rated">Top Rated</string>
+    <string name="overview_label">A plot synopsis :</string>
+    <string name="release_date_label">Release Date :</string>
+    <string name="user_ratings_label">User Ratings :</string>
 </resources>
