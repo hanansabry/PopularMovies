@@ -47,21 +47,11 @@ public class DetailActivity extends AppCompatActivity {
         mUserRatingsView.setText(movie.getVoteAverage());
         mDateView.setText(movie.getReleaseDate());
         mOverviewTextView.setText(movie.getOverview());
+        //TODO change placeholder image and error image
         Picasso.with(this)
                 .load(Movie.POSTER_BASE_URL + Movie.SIZE_W185 + movie.getPosterPath())
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(android.R.drawable.stat_notify_error)
                 .into(mPosterImageView);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

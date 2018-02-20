@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.hanan.and.udacity.popularmovies.BuildConfig;
 import com.hanan.and.udacity.popularmovies.adapter.MoviesAdapter;
 import com.hanan.and.udacity.popularmovies.R;
 import com.hanan.and.udacity.popularmovies.model.Movie;
@@ -25,7 +26,11 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String API_KEY = "195626915e9cc1f44e5ed426694aaaaf";
+    private final String API_KEY = BuildConfig.API_KEY;
+    public static final int STATUS_CODE_OK = 200;
+    public static final int STATUS_CODE_UNAUTHORIZED = 401;
+    public static final int STATUS_CODE_FORBIDDEN = 403;
+    public static final int STATUS_CODE_BAD_REQUEST = 400;
     RecyclerView mMoviesRecyclerView;
     MoviesAdapter mMoviesAdapter;
 
@@ -39,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
         mMoviesRecyclerView.setLayoutManager(mGridLayoutManager);
 
+        //check the API KEY
         if (API_KEY.isEmpty()) {
-            Toast.makeText(this, getResources().getString(R.string.api_key_error), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.no_api_key_error), Toast.LENGTH_SHORT).show();
         }
-
         getApiResponse(R.id.popular_action);
     }
 
@@ -54,45 +59,56 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.popular_action){
+        if (item.getItemId() == R.id.popular_action) {
             setTitle(getResources().getString(R.string.popular) + " Movies");
-        }else if (item.getItemId() == R.id.top_rated_action){
+        } else if (item.getItemId() == R.id.top_rated_action) {
             setTitle(getResources().getString(R.string.top_rated) + " Movies");
         }
         getApiResponse(item.getItemId());
         return super.onOptionsItemSelected(item);
     }
 
-    List<Movie> movies;
-    public List<Movie> getApiResponse(int id){
+    public void getApiResponse(int id) {
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<MovieResponse> call = null;
-        if(id == R.id.popular_action){
+        if (id == R.id.popular_action) {
             call = apiService.getPopularMovies(API_KEY);
-        }else if(id == R.id.top_rated_action){
+        } else if (id == R.id.top_rated_action) {
             call = apiService.getTopRatedMovies(API_KEY);
         }
-
-        if(call ==  null)
-            return null;
 
         call.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 int statusCode = response.code();
-                movies = response.body().getResults();
-                mMoviesAdapter = new MoviesAdapter(MainActivity.this, movies);
-                mMoviesRecyclerView.setAdapter(mMoviesAdapter);
-                mMoviesAdapter.notifyDataSetChanged();
+                if (statusCode == STATUS_CODE_OK) {
+                    List<Movie> movies = response.body().getResults();
+                    mMoviesAdapter = new MoviesAdapter(MainActivity.this, movies);
+                    mMoviesRecyclerView.setAdapter(mMoviesAdapter);
+                    mMoviesAdapter.notifyDataSetChanged();
+                } else if (statusCode == STATUS_CODE_UNAUTHORIZED) {
+                    //TODO here we will implement Wrong Api Dialog
+                    Toast.makeText(MainActivity.this, getApiErrorMsg(STATUS_CODE_UNAUTHORIZED), Toast.LENGTH_LONG).show();
+                }
+
             }
 
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
+                Toast.makeText(MainActivity.this, getResources().getString(R.string.no_internet_connection),
+                        Toast.LENGTH_LONG).show();
                 Log.e("Movie", t.toString());
-                movies = null;
+                //TODO here we will implement No Internet Connection Dialog
             }
         });
-        return movies;
+    }
+
+    public String getApiErrorMsg(int errId) {
+        if (errId == STATUS_CODE_UNAUTHORIZED) {
+            return getResources().getString(R.string.wrong_api_key_error);
+        } else {
+            return getResources().getString(R.string.no_api_key_error);
+        }
     }
 }
