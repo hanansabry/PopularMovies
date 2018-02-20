@@ -63,7 +63,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             //TODO change placeholder image and error image
             Picasso.with(mContext)
                     .load(imagePath)
-                    .placeholder(R.drawable.ic_launcher_background)
+                    .placeholder(R.drawable.movie_place_holder)
                     .error(android.R.drawable.stat_notify_error)
                     .into(movieThumb);
         }

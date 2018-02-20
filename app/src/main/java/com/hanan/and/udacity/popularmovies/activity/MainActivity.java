@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.hanan.and.udacity.popularmovies.BuildConfig;
@@ -33,12 +34,14 @@ public class MainActivity extends AppCompatActivity {
     public static final int STATUS_CODE_BAD_REQUEST = 400;
     RecyclerView mMoviesRecyclerView;
     MoviesAdapter mMoviesAdapter;
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mProgressBar = findViewById(R.id.progress_bar);
         mMoviesRecyclerView = findViewById(R.id.movies_rv);
         //set the RecyclerView Layout
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
@@ -64,12 +67,17 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.top_rated_action) {
             setTitle(getResources().getString(R.string.top_rated) + " Movies");
         }
+        mProgressBar.setVisibility(ProgressBar.VISIBLE);
         getApiResponse(item.getItemId());
         return super.onOptionsItemSelected(item);
     }
 
     public void getApiResponse(int id) {
 
+        /*
+         * Resource : Android Working with Retrofit HTTP Library :
+         * https://www.androidhive.info/2016/05/android-working-with-retrofit-http-library/
+         */
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<MovieResponse> call = null;
         if (id == R.id.popular_action) {
@@ -81,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                mProgressBar.setVisibility(ProgressBar.INVISIBLE);
                 int statusCode = response.code();
                 if (statusCode == STATUS_CODE_OK) {
                     List<Movie> movies = response.body().getResults();
@@ -96,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
+                mProgressBar.setVisibility(ProgressBar.INVISIBLE);
                 Toast.makeText(MainActivity.this, getResources().getString(R.string.no_internet_connection),
                         Toast.LENGTH_LONG).show();
                 Log.e("Movie", t.toString());

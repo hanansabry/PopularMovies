@@ -50,7 +50,7 @@ public class DetailActivity extends AppCompatActivity {
         //TODO change placeholder image and error image
         Picasso.with(this)
                 .load(Movie.POSTER_BASE_URL + Movie.SIZE_W185 + movie.getPosterPath())
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.movie_place_holder)
                 .error(android.R.drawable.stat_notify_error)
                 .into(mPosterImageView);
     }
