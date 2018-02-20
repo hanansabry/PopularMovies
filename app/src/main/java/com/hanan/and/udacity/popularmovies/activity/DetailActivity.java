@@ -28,10 +28,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
 
-        //allow Up navigation with the app icon in the action bar
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        //hide action bar
         getSupportActionBar().hide();
+
         //get intent
         Intent intent = getIntent();
         Movie movie = intent.getParcelableExtra(MoviesAdapter.MOVIE);
@@ -47,11 +46,10 @@ public class DetailActivity extends AppCompatActivity {
         mUserRatingsView.setText(movie.getVoteAverage());
         mDateView.setText(movie.getReleaseDate());
         mOverviewTextView.setText(movie.getOverview());
-        //TODO change placeholder image and error image
         Picasso.with(this)
                 .load(Movie.POSTER_BASE_URL + Movie.SIZE_W185 + movie.getPosterPath())
                 .placeholder(R.drawable.movie_place_holder)
-                .error(android.R.drawable.stat_notify_error)
+                .error(R.drawable.error_loading_image)
                 .into(mPosterImageView);
     }
 }

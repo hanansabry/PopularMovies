@@ -97,8 +97,11 @@ public class MainActivity extends AppCompatActivity {
                     mMoviesRecyclerView.setAdapter(mMoviesAdapter);
                     mMoviesAdapter.notifyDataSetChanged();
                 } else if (statusCode == STATUS_CODE_UNAUTHORIZED) {
-                    //TODO here we will implement Wrong Api Dialog
-                    Toast.makeText(MainActivity.this, getApiErrorMsg(STATUS_CODE_UNAUTHORIZED), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,
+                            getApiErrorMsg(STATUS_CODE_UNAUTHORIZED), Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            getGeneralError(), Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -109,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, getResources().getString(R.string.no_internet_connection),
                         Toast.LENGTH_LONG).show();
                 Log.e("Movie", t.toString());
-                //TODO here we will implement No Internet Connection Dialog
             }
         });
     }
@@ -120,5 +122,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return getResources().getString(R.string.no_api_key_error);
         }
+    }
+
+    public String getGeneralError() {
+        return getResources().getString(R.string.general_error);
     }
 }

@@ -60,11 +60,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             position = getAdapterPosition();
             Movie movie = mMoviesList.get(position);
             String imagePath = Movie.POSTER_BASE_URL + Movie.SIZE_W185 + movie.getPosterPath();
-            //TODO change placeholder image and error image
             Picasso.with(mContext)
                     .load(imagePath)
                     .placeholder(R.drawable.movie_place_holder)
-                    .error(android.R.drawable.stat_notify_error)
+                    .error(R.drawable.error_loading_image)
                     .into(movieThumb);
         }
 

@@ -7,6 +7,7 @@
     <string name="no_api_key_error">Please obtain your API KEY from themoviedb.org first!</string>
     <string name="wrong_api_key_error">Wrong API KEY, Please get correct one from themoviedb.org!</string>
     <string name="no_internet_connection">Please check your Internet Connection and try again !</string>
+    <string name="general_error">Can\'t load data, Please try again!</string>
     <string name="popular">Popular</string>
 </resources>
 
