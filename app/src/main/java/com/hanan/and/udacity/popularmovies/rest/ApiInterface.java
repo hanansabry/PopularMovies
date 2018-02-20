@@ -1,8 +1,6 @@
 package com.hanan.and.udacity.popularmovies.rest;
 
-import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.hanan.and.udacity.popularmovies.model.MovieResponse;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

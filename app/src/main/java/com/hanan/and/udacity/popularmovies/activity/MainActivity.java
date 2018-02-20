@@ -17,7 +17,6 @@ import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.hanan.and.udacity.popularmovies.model.MovieResponse;
 import com.hanan.and.udacity.popularmovies.rest.ApiClient;
 import com.hanan.and.udacity.popularmovies.rest.ApiInterface;
-import com.hanan.and.udacity.popularmovies.utils.JsonUtils;
 
 import java.util.List;
 
@@ -28,10 +27,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private final String API_KEY = BuildConfig.API_KEY;
-    public static final int STATUS_CODE_OK = 200;
-    public static final int STATUS_CODE_UNAUTHORIZED = 401;
-    public static final int STATUS_CODE_FORBIDDEN = 403;
-    public static final int STATUS_CODE_BAD_REQUEST = 400;
+    private static final int STATUS_CODE_OK = 200;
+    private static final int STATUS_CODE_UNAUTHORIZED = 401;
     RecyclerView mMoviesRecyclerView;
     MoviesAdapter mMoviesAdapter;
     ProgressBar mProgressBar;
@@ -74,9 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void getApiResponse(int id) {
 
-        /*
-         * Resource : Android Working with Retrofit HTTP Library :
-         * https://www.androidhive.info/2016/05/android-working-with-retrofit-http-library/
+        /*  Resource : Android Working with Retrofit HTTP Library :
+         *  Link     : https://www.androidhive.info/2016/05/android-working-with-retrofit-http-library/
          */
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<MovieResponse> call = null;

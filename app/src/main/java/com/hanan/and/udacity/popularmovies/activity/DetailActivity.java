@@ -3,9 +3,7 @@ package com.hanan.and.udacity.popularmovies.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,13 +12,24 @@ import com.hanan.and.udacity.popularmovies.R;
 import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Nono on 2/19/2018.
  */
 
 public class DetailActivity extends AppCompatActivity {
 
-    TextView mTitleView, mUserRatingsView, mDateView, mOverviewTextView;
+    @BindView(R.id.movie_title)
+    TextView mTitleView;
+    @BindView(R.id.user_ratings_value)
+    TextView mUserRatingsView;
+    @BindView(R.id.release_date_value)
+    TextView mDateView;
+    @BindView(R.id.overview_tv)
+    TextView mOverviewTextView;
+    @BindView(R.id.poster_imageView)
     ImageView mPosterImageView;
 
     @Override
@@ -35,11 +44,7 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Movie movie = intent.getParcelableExtra(MoviesAdapter.MOVIE);
 
-        mPosterImageView = findViewById(R.id.poster_imageView);
-        mTitleView = findViewById(R.id.movie_title);
-        mUserRatingsView = findViewById(R.id.user_ratings_value);
-        mDateView = findViewById(R.id.release_date_value);
-        mOverviewTextView = findViewById(R.id.overview_tv);
+        ButterKnife.bind(this);
 
         //fill views with data
         mTitleView.setText(movie.getOriginalTitle());

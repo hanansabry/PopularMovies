@@ -22,7 +22,7 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
     public static final String MOVIE = "Movie";
-    private Context mContext;
+    private final Context mContext;
     private List<Movie> mMoviesList;
 
     public MoviesAdapter(Context context, List<Movie> movieList) {

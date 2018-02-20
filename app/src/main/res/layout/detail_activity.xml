@@ -2,22 +2,20 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <TextView
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/movie_title_height"
             android:background="@color/primaryDarkColor"
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center"
-            android:text="One Flew Over The Cuckoo't Nest"
             android:textColor="@color/primaryTextColor"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -55,7 +53,6 @@
                 android:layout_height="match_parent"
                 android:gravity="left|center_vertical"
                 android:padding="4dp"
-                android:text="8.9"
                 android:textColor="@color/secondary"
                 android:textSize="12sp" />
 
@@ -78,7 +75,6 @@
                 android:layout_height="match_parent"
                 android:gravity="left|center_vertical"
                 android:padding="4dp"
-                android:text="1991-15-10"
                 android:textColor="@color/secondary"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -113,7 +109,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="casual"
-            android:text="The true story of how businessman Oskar Schindler saved over a thousand Jewish lives from the Nazis while they worked as slaves in his factory during World War II."
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/overview_label_tv" />
