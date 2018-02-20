@@ -1,6 +1,6 @@
 package com.hanan.and.udacity.popularmovies.utils;
 
-import com.hanan.and.udacity.popularmovies.models.Movie;
+import com.hanan.and.udacity.popularmovies.model.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONException;

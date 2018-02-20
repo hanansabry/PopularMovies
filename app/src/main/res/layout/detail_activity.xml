@@ -90,8 +90,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rating_date_layout"
-            app:srcCompat="@drawable/poster" />
+            app:layout_constraintTop_toBottomOf="@+id/rating_date_layout" />
 
         <TextView
             android:id="@+id/overview_label_tv"

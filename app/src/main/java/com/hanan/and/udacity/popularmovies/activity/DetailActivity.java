@@ -1,17 +1,17 @@
-package com.hanan.and.udacity.popularmovies;
+package com.hanan.and.udacity.popularmovies.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.hanan.and.udacity.popularmovies.models.Movie;
+import com.hanan.and.udacity.popularmovies.adapter.MoviesAdapter;
+import com.hanan.and.udacity.popularmovies.R;
+import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -29,8 +29,9 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.detail_activity);
 
         //allow Up navigation with the app icon in the action bar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        getSupportActionBar().hide();
         //get intent
         Intent intent = getIntent();
         Movie movie = intent.getParcelableExtra(MoviesAdapter.MOVIE);
@@ -41,11 +42,16 @@ public class DetailActivity extends AppCompatActivity {
         mDateView = findViewById(R.id.release_date_value);
         mOverviewTextView = findViewById(R.id.overview_tv);
 
+        //fill views with data
         mTitleView.setText(movie.getOriginalTitle());
-        mUserRatingsView.setText(movie.getUserRatings());
+        mUserRatingsView.setText(movie.getVoteAverage());
         mDateView.setText(movie.getReleaseDate());
-        mOverviewTextView.setText(movie.getPlotSynopsis());
-        Picasso.with(this).load(movie.getPosterImage()).into(mPosterImageView);
+        mOverviewTextView.setText(movie.getOverview());
+        Picasso.with(this)
+                .load(Movie.POSTER_BASE_URL + Movie.SIZE_W185 + movie.getPosterPath())
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(android.R.drawable.stat_notify_error)
+                .into(mPosterImageView);
     }
 
     @Override

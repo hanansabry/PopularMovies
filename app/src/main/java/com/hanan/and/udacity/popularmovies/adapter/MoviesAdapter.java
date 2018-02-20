@@ -1,16 +1,16 @@
-package com.hanan.and.udacity.popularmovies;
+package com.hanan.and.udacity.popularmovies.adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.hanan.and.udacity.popularmovies.models.Movie;
+import com.hanan.and.udacity.popularmovies.R;
+import com.hanan.and.udacity.popularmovies.activity.DetailActivity;
+import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -22,16 +22,6 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
     public static final String MOVIE = "Movie";
-
-    private static final String POSTER_BASE_URL = "http://image.tmdb.org/t/p/";
-    private static final String SIZE_W92 = "w92";
-    private static final String SIZE_W154 = "w154";
-    private static final String SIZE_W185 = "w185";
-    private static final String SIZE_W342 = "w342";
-    private static final String SIZE_W500 = "w500";
-    private static final String SIZE_W780 = "w780";
-    private static final String SIZE_ORIGINAL = "original";
-
     private Context mContext;
     private List<Movie> mMoviesList;
 
@@ -69,10 +59,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         public void bindMovieImagePoster() {
             position = getAdapterPosition();
             Movie movie = mMoviesList.get(position);
-            String imagePath = POSTER_BASE_URL + SIZE_W185 + movie.getPosterImage();
-            movie.setPosterImage(imagePath);
-            Log.d("Movie", imagePath);
-            Picasso.with(mContext).load(imagePath).into(movieThumb);
+            String imagePath = Movie.POSTER_BASE_URL + Movie.SIZE_W185 + movie.getPosterPath();
+            Picasso.with(mContext)
+                    .load(imagePath)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(android.R.drawable.stat_notify_error)
+                    .into(movieThumb);
         }
 
         @Override
