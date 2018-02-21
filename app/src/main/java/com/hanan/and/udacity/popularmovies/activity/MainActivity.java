@@ -15,6 +15,10 @@ import com.hanan.and.udacity.popularmovies.adapter.MoviesAdapter;
 import com.hanan.and.udacity.popularmovies.R;
 import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.hanan.and.udacity.popularmovies.model.MovieResponse;
+import com.hanan.and.udacity.popularmovies.model.MovieReviewsResponse;
+import com.hanan.and.udacity.popularmovies.model.MovieVideo;
+import com.hanan.and.udacity.popularmovies.model.MovieVideosResponse;
+import com.hanan.and.udacity.popularmovies.model.UserReview;
 import com.hanan.and.udacity.popularmovies.rest.ApiClient;
 import com.hanan.and.udacity.popularmovies.rest.ApiInterface;
 
@@ -26,9 +30,9 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String API_KEY = BuildConfig.API_KEY;
-    private static final int STATUS_CODE_OK = 200;
-    private static final int STATUS_CODE_UNAUTHORIZED = 401;
+    public static final String API_KEY = BuildConfig.API_KEY;
+    public static final int STATUS_CODE_OK = 200;
+    public static final int STATUS_CODE_UNAUTHORIZED = 401;
     RecyclerView mMoviesRecyclerView;
     MoviesAdapter mMoviesAdapter;
     ProgressBar mProgressBar;
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, getResources().getString(R.string.no_api_key_error), Toast.LENGTH_SHORT).show();
         }
         getApiResponse(R.id.popular_action);
+//        getMovieReviewsResponse();
     }
 
     @Override
@@ -123,4 +128,6 @@ public class MainActivity extends AppCompatActivity {
     public String getGeneralError() {
         return getResources().getString(R.string.general_error);
     }
+
+
 }

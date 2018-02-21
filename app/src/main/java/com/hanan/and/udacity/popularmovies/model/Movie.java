@@ -19,6 +19,8 @@ public class Movie implements Parcelable {
     public static final String SIZE_W780 = "w780";
     public static final String SIZE_ORIGINAL = "original";
 
+    @SerializedName("id")
+    private int id;
     @SerializedName("original_title")
     private String originalTitle;
     @SerializedName("poster_path")
@@ -30,8 +32,9 @@ public class Movie implements Parcelable {
     @SerializedName("release_date")
     private String releaseDate;
 
-    public Movie(String originalTitle, String posterPath, String overview,
+    public Movie(int id, String originalTitle, String posterPath, String overview,
                  String voteAverage, String releaseDate) {
+        this.id = id;
         this.originalTitle = originalTitle;
         this.posterPath = posterPath;
         this.overview = overview;
@@ -42,11 +45,20 @@ public class Movie implements Parcelable {
     //constructor used for parcel
     public Movie(Parcel parcel) {
         //read and set saved values from
+        id = parcel.readInt();
         originalTitle = parcel.readString();
         posterPath = parcel.readString();
         overview = parcel.readString();
         voteAverage = parcel.readString();
         releaseDate = parcel.readString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getOriginalTitle() {
@@ -99,6 +111,7 @@ public class Movie implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         //write all properties to the parcel
+        parcel.writeInt(id);
         parcel.writeString(originalTitle);
         parcel.writeString(posterPath);
         parcel.writeString(overview);

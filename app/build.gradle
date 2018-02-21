@@ -16,7 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         applicationVariants.all { variant ->
-            variant.buildConfigField "String", "API_KEY", "\""+getApiKey()+"\""
+            variant.buildConfigField "String", "API_KEY", "\"" + getApiKey() + "\""
         }
     }
 }
@@ -24,7 +24,8 @@ android {
 /*  Resource : Android: Loading API Keys and other secrets from properties file using gradle
  *  Link     : https://gist.github.com/curioustechizen/9f7d745f9f5f51355bd6
  */
-def getApiKey(){
+
+def getApiKey() {
     def Properties props = new Properties()
     props.load(new FileInputStream(new File('secrets.properties')))
     return props['API_KEY']
@@ -40,6 +41,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.0.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.github.aakira:expandable-layout:1.4.2@aar'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

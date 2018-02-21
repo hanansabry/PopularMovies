@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,8 +29,7 @@
             android:id="@+id/rating_date_layout"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_marginTop="4dp"
-            android:background="@color/secondaryLightColor"
+            android:background="@color/secondaryColor"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="4"
@@ -84,35 +85,75 @@
             android:layout_width="@dimen/poster_detail_width"
             android:layout_height="@dimen/poster_detail_height"
             android:layout_marginTop="8dp"
+            android:contentDescription="@string/app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rating_date_layout"
-            android:contentDescription="@string/app_name"/>
+            app:layout_constraintTop_toBottomOf="@+id/rating_date_layout" />
 
-        <TextView
-            android:id="@+id/overview_label_tv"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/overview_label"
-            android:textColor="@color/secondary"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/poster_imageView" />
+            android:orientation="vertical"
 
-        <TextView
-            android:id="@+id/overview_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="casual"
-            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/overview_label_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/poster_imageView">
+
+            <TextView
+                android:id="@+id/overview_label_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/LabelTextViewAppearance"
+                android:text="@string/overview_label"
+                 />
+
+            <TextView
+                android:id="@+id/overview_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ContentTextViewAppearance"/>
+
+            <TextView
+                android:id="@+id/trailers_label_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/LabelTextViewAppearance"
+                android:text="@string/trailers_laberl"
+                />
+
+            <TextView
+                android:id="@+id/trailers_content_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ContentTextViewAppearance"
+                android:text="Trailer 1\nTrailer 2"/>
+
+            <TextView
+                android:id="@+id/reviews_label_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/LabelTextViewAppearance"
+                android:text="@string/users_reviews_label"
+                />
+
+            <TextView
+                android:id="@+id/reviews_content_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ContentTextViewAppearance"
+                android:text="Review 1\nReview 2"/>
+        </LinearLayout>
+
+
+        <!--<ImageButton-->
+        <!--android:id="@+id/imageButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/rating_date_layout"-->
+        <!--app:srcCompat="@drawable/favourite_button_selector" />-->
 
     </android.support.constraint.ConstraintLayout>
 

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.hanan.and.udacity.popularmovies.R;
 import com.hanan.and.udacity.popularmovies.activity.DetailActivity;
+import com.hanan.and.udacity.popularmovies.activity.ExpandleActivity;
 import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.squareup.picasso.Picasso;
 
