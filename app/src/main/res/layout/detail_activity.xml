@@ -15,10 +15,10 @@
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/movie_title_height"
-            android:background="@color/primaryDarkColor"
+            android:background="@color/primaryColor"
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
             android:id="@+id/rating_date_layout"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@color/secondaryColor"
+            android:background="@color/primaryDarkColor"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="4"
@@ -44,7 +44,7 @@
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="@string/user_ratings_label"
-                android:textColor="@color/secondary"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
                 android:layout_height="match_parent"
                 android:gravity="left|center_vertical"
                 android:padding="4dp"
-                android:textColor="@color/secondary"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="@string/release_date_label"
-                android:textColor="@color/secondary"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -76,7 +76,7 @@
                 android:layout_height="match_parent"
                 android:gravity="left|center_vertical"
                 android:padding="4dp"
-                android:textColor="@color/secondary"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -84,7 +84,7 @@
             android:id="@+id/poster_imageView"
             android:layout_width="@dimen/poster_detail_width"
             android:layout_height="@dimen/poster_detail_height"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="2dp"
             android:contentDescription="@string/app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,47 +101,52 @@
 
             <TextView
                 android:id="@+id/overview_label_tv"
+                style="@style/LabelTextViewAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/LabelTextViewAppearance"
-                android:text="@string/overview_label"
-                 />
+                android:text="@string/overview_label" />
 
             <TextView
                 android:id="@+id/overview_tv"
+                style="@style/ContentTextViewAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/ContentTextViewAppearance"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/trailers_label_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 style="@style/LabelTextViewAppearance"
-                android:text="@string/trailers_laberl"
-                />
-
-            <TextView
-                android:id="@+id/trailers_content_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/ContentTextViewAppearance"
-                android:text="Trailer 1\nTrailer 2"/>
+                android:text="@string/trailers_laberl" />
+
+            <!--<TextView-->
+                <!--android:id="@+id/trailers_content_tv"-->
+                <!--style="@style/ContentTextViewAppearance"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/trailers_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/reviews_label_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 style="@style/LabelTextViewAppearance"
-                android:text="@string/users_reviews_label"
-                />
-
-            <TextView
-                android:id="@+id/reviews_content_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/ContentTextViewAppearance"
-                android:text="Review 1\nReview 2"/>
+                android:text="@string/users_reviews_label" />
+
+            <!--<TextView-->
+                <!--android:id="@+id/reviews_content_tv"-->
+                <!--style="@style/ContentTextViewAppearance"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/reviews_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 

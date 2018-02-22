@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.hanan.and.udacity.popularmovies.adapter.MoviesAdapter;
 import com.hanan.and.udacity.popularmovies.R;
+import com.hanan.and.udacity.popularmovies.adapter.ReviewsAdapter;
+import com.hanan.and.udacity.popularmovies.adapter.TrailersAdapter;
 import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.hanan.and.udacity.popularmovies.model.MovieReviewsResponse;
 import com.hanan.and.udacity.popularmovies.model.MovieVideo;
@@ -47,11 +51,17 @@ public class DetailActivity extends AppCompatActivity {
     TextView mOverviewTextView;
     @BindView(R.id.poster_imageView)
     ImageView mPosterImageView;
-    @BindView(R.id.trailers_content_tv)
-    TextView mMovieVideos;
-    @BindView(R.id.reviews_content_tv)
-    TextView mMovieReviews;
+//    @BindView(R.id.trailers_content_tv)
+//    TextView mMovieVideos;
+//    @BindView(R.id.reviews_content_tv)
+//    TextView mMovieReviews;
+    @BindView(R.id.trailers_rv)
+    RecyclerView mTrailersRecyclerView;
+    @BindView(R.id.reviews_rv)
+    RecyclerView mUserReviewsRecycleView;
 
+    TrailersAdapter mTrailersAdapter;
+    ReviewsAdapter mReviewsAdapter;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +90,14 @@ public class DetailActivity extends AppCompatActivity {
         Log.e("MovieID", movie.getId()+"");
         getMovieVideosResponse(movie.getId());
         getMovieReviewsResponse(movie.getId());
+
+        //fill trailers recycler view
+        LinearLayoutManager trailersLayout = new LinearLayoutManager(this);
+        mTrailersRecyclerView.setLayoutManager(trailersLayout);
+
+        //fill reviews recycler view
+        LinearLayoutManager reviewsLayout = new LinearLayoutManager(this);
+        mUserReviewsRecycleView.setLayoutManager(reviewsLayout);
     }
 
     public void getMovieVideosResponse(int movieId) {
@@ -92,11 +110,9 @@ public class DetailActivity extends AppCompatActivity {
                 int statusCode = response.code();
                 if (statusCode == MainActivity.STATUS_CODE_OK) {
                     List<MovieVideo> trailers = response.body().getResults();
-                    StringBuilder trailersContent = new StringBuilder();
-                    for (MovieVideo trailer : trailers) {
-                        trailersContent.append(trailer.getName()).append("\n");
-                    }
-                    mMovieVideos.setText(trailersContent);
+                    mTrailersAdapter = new TrailersAdapter(DetailActivity.this, trailers);
+                    mTrailersRecyclerView.setAdapter(mTrailersAdapter);
+                    mTrailersAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -119,12 +135,15 @@ public class DetailActivity extends AppCompatActivity {
                 if (statusCode == MainActivity.STATUS_CODE_OK) {
                     List<UserReview> reviews = response.body().getResults();
                     StringBuilder userReviewContent = new StringBuilder();
-                    for (UserReview review : reviews) {
-                        userReviewContent.append(review.getAuthor()).append("\n")
-                                .append(review.getContent())
-                                .append("\n\n");
-                    }
-                    mMovieReviews.setText(userReviewContent);
+//                    for (UserReview review : reviews) {
+//                        userReviewContent.append(review.getAuthor()).append("\n")
+//                                .append(review.getContent())
+//                                .append("\n\n");
+//                    }
+//                    mMovieReviews.setText(userReviewContent);
+                    mReviewsAdapter = new ReviewsAdapter(DetailActivity.this, reviews);
+                    mUserReviewsRecycleView.setAdapter(mReviewsAdapter);
+                    mReviewsAdapter.notifyDataSetChanged();
                 }
             }
 

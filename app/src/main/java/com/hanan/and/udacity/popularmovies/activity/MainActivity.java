@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, getResources().getString(R.string.no_api_key_error), Toast.LENGTH_SHORT).show();
         }
         getApiResponse(R.id.popular_action);
-//        getMovieReviewsResponse();
     }
 
     @Override
