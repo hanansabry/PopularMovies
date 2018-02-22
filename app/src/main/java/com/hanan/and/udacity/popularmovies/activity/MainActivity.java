@@ -65,11 +65,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.popular_action) {
             setTitle(getResources().getString(R.string.popular) + " Movies");
+            getApiResponse(item.getItemId());
         } else if (item.getItemId() == R.id.top_rated_action) {
             setTitle(getResources().getString(R.string.top_rated) + " Movies");
+            getApiResponse(item.getItemId());
+        } else if (item.getItemId() == R.id.my_favourite_action){
+            setTitle(getResources().getString(R.string.my_favourite) + "Movies");
+            Toast.makeText(this, "Showing Favourite Movies", Toast.LENGTH_SHORT).show();
         }
         mProgressBar.setVisibility(ProgressBar.VISIBLE);
-        getApiResponse(item.getItemId());
         return super.onOptionsItemSelected(item);
     }
 

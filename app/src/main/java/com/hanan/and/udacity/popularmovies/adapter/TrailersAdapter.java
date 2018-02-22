@@ -69,8 +69,9 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.Traile
     private void openTrailerVideo(String link) {
         Uri webpage = Uri.parse(link);
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        Intent chooser = Intent.createChooser(intent, "Choose");
         if (intent.resolveActivity(mContext.getPackageManager()) != null) {
-            mContext.startActivity(intent);
+            mContext.startActivity(chooser);
         }
     }
 }

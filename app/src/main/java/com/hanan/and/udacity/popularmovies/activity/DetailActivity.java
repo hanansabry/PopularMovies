@@ -167,6 +167,7 @@ public class DetailActivity extends AppCompatActivity {
                 return true;
             case R.id.add_favourite_action:
                 Toast.makeText(this, "Added to favourite ..", Toast.LENGTH_SHORT).show();
+                item.setIcon(R.drawable.action_bar_selector);
                 return true;
         }
         return super.onOptionsItemSelected(item);
