@@ -3,10 +3,14 @@ package com.hanan.and.udacity.popularmovies.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,10 +55,6 @@ public class DetailActivity extends AppCompatActivity {
     TextView mOverviewTextView;
     @BindView(R.id.poster_imageView)
     ImageView mPosterImageView;
-//    @BindView(R.id.trailers_content_tv)
-//    TextView mMovieVideos;
-//    @BindView(R.id.reviews_content_tv)
-//    TextView mMovieReviews;
     @BindView(R.id.trailers_rv)
     RecyclerView mTrailersRecyclerView;
     @BindView(R.id.reviews_rv)
@@ -62,13 +62,18 @@ public class DetailActivity extends AppCompatActivity {
 
     TrailersAdapter mTrailersAdapter;
     ReviewsAdapter mReviewsAdapter;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
 
         //hide action bar
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
+
+        //allow Up navigation with the app icon in the action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle(getResources().getString(R.string.detail_activity_name));
 
         //get intent
         Intent intent = getIntent();
@@ -87,7 +92,7 @@ public class DetailActivity extends AppCompatActivity {
                 .error(R.drawable.error_loading_image)
                 .into(mPosterImageView);
 
-        Log.e("MovieID", movie.getId()+"");
+        Log.e("MovieID", movie.getId() + "");
         getMovieVideosResponse(movie.getId());
         getMovieReviewsResponse(movie.getId());
 
@@ -134,13 +139,6 @@ public class DetailActivity extends AppCompatActivity {
                 int statusCode = response.code();
                 if (statusCode == MainActivity.STATUS_CODE_OK) {
                     List<UserReview> reviews = response.body().getResults();
-                    StringBuilder userReviewContent = new StringBuilder();
-//                    for (UserReview review : reviews) {
-//                        userReviewContent.append(review.getAuthor()).append("\n")
-//                                .append(review.getContent())
-//                                .append("\n\n");
-//                    }
-//                    mMovieReviews.setText(userReviewContent);
                     mReviewsAdapter = new ReviewsAdapter(DetailActivity.this, reviews);
                     mUserReviewsRecycleView.setAdapter(mReviewsAdapter);
                     mReviewsAdapter.notifyDataSetChanged();
@@ -154,4 +152,23 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.detail_activity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            case R.id.add_favourite_action:
+                Toast.makeText(this, "Added to favourite ..", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

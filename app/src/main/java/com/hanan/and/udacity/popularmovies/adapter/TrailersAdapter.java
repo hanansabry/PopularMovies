@@ -61,6 +61,7 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.Traile
             position = getAdapterPosition();
             MovieVideo trailer = mTrailersList.get(position);
             String trailerLink = YOUTUBE_PATH + trailer.getKey();
+            //TODO open chooser to choose between apps to launch the trailer
             openTrailerVideo(trailerLink);
         }
     }
