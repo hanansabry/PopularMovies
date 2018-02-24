@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.hanan.and.udacity.popularmovies.activity.MainActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/movies_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="@dimen/progress_bar_width"
@@ -12,10 +17,5 @@
         android:layout_gravity="center"
         android:theme="@style/AppTheme.ProgressBarAccent"
         android:visibility="visible" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/movies_rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </FrameLayout>

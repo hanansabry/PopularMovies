@@ -1,5 +1,8 @@
 package com.hanan.and.udacity.popularmovies.activity;
 
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.support.v4.app.LoaderManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +16,8 @@ import android.widget.Toast;
 import com.hanan.and.udacity.popularmovies.BuildConfig;
 import com.hanan.and.udacity.popularmovies.adapter.MoviesAdapter;
 import com.hanan.and.udacity.popularmovies.R;
+import com.hanan.and.udacity.popularmovies.data.FavouriteMoviesContract;
+import com.hanan.and.udacity.popularmovies.data.FavouriteMoviesLoader;
 import com.hanan.and.udacity.popularmovies.model.Movie;
 import com.hanan.and.udacity.popularmovies.model.MovieResponse;
 import com.hanan.and.udacity.popularmovies.model.MovieReviewsResponse;
@@ -21,6 +26,7 @@ import com.hanan.and.udacity.popularmovies.model.MovieVideosResponse;
 import com.hanan.and.udacity.popularmovies.model.UserReview;
 import com.hanan.and.udacity.popularmovies.rest.ApiClient;
 import com.hanan.and.udacity.popularmovies.rest.ApiInterface;
+import com.hanan.and.udacity.popularmovies.data.FavouriteMoviesContract.FavouriteEntry;
 
 import java.util.List;
 
@@ -33,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String API_KEY = BuildConfig.API_KEY;
     public static final int STATUS_CODE_OK = 200;
     public static final int STATUS_CODE_UNAUTHORIZED = 401;
-    RecyclerView mMoviesRecyclerView;
+    public RecyclerView mMoviesRecyclerView;
     MoviesAdapter mMoviesAdapter;
-    ProgressBar mProgressBar;
+    public ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.top_rated_action) {
             setTitle(getResources().getString(R.string.top_rated) + " Movies");
             getApiResponse(item.getItemId());
-        } else if (item.getItemId() == R.id.my_favourite_action){
-            setTitle(getResources().getString(R.string.my_favourite) + "Movies");
-            Toast.makeText(this, "Showing Favourite Movies", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.my_favourite_action) {
+            setTitle(getResources().getString(R.string.my_favourite));
+            FavouriteMoviesLoader loader = new FavouriteMoviesLoader(MainActivity.this, getLoaderManager());
         }
         mProgressBar.setVisibility(ProgressBar.VISIBLE);
         return super.onOptionsItemSelected(item);
@@ -131,6 +137,5 @@ public class MainActivity extends AppCompatActivity {
     public String getGeneralError() {
         return getResources().getString(R.string.general_error);
     }
-
 
 }

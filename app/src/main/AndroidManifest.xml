@@ -21,7 +21,11 @@
         <activity
             android:name=".activity.DetailActivity"
             android:parentActivityName=".activity.MainActivity" />
-        <activity android:name=".activity.ExpandleActivity"></activity>
+
+        <provider
+            android:name=".data.FavouriteMovesContentProvider"
+            android:authorities="com.hanan.and.udacity.popularmovies"
+            android:exported="false"/>
     </application>
 
 </manifest>

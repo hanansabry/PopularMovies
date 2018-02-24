@@ -14,5 +14,10 @@
     <string name="users_reviews_label">Users Reviews</string>
     <string name="add_to_favourite">Add to Favourite</string>
     <string name="my_favourite">My Favourite</string>
+    <string name="added_to_favourite_msg">Movie is marked as favourite</string>
+    <string name="remove_from_favourite_msg">Movie is removed from favourite</string>
+    <string name="added_to_favourite_error">Something is going wrong, Please try againg</string>
+    <string name="favourite">favourite</string>
+    <string name="preference_file_key">favourite_movies</string>
 </resources>
 
