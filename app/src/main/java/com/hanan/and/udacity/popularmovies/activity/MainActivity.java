@@ -1,5 +1,6 @@
 package com.hanan.and.udacity.popularmovies.activity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v4.app.LoaderManager;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,9 +41,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String API_KEY = BuildConfig.API_KEY;
     public static final int STATUS_CODE_OK = 200;
     public static final int STATUS_CODE_UNAUTHORIZED = 401;
+    public static final int SORT_BY_POPULAR = R.id.popular_action;
+    public static final String SORT_CREATION_KEY = "SORT_CREATION_KEY";
+    public static final String SORT_CREATION_FILE = "SORT_CREATION_FILE";
     public RecyclerView mMoviesRecyclerView;
     MoviesAdapter mMoviesAdapter;
     public ProgressBar mProgressBar;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +57,30 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar = findViewById(R.id.progress_bar);
         mMoviesRecyclerView = findViewById(R.id.movies_rv);
         //set the RecyclerView Layout
-        GridLayoutManager mGridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(MainActivity.this, calculateNoOfColumns(this));
         mMoviesRecyclerView.setLayoutManager(mGridLayoutManager);
 
         //check the API KEY
         if (API_KEY.isEmpty()) {
             Toast.makeText(this, getResources().getString(R.string.no_api_key_error), Toast.LENGTH_SHORT).show();
         }
-        getApiResponse(R.id.popular_action);
+
+        sharedPref = getSharedPreferences(SORT_CREATION_FILE, this.MODE_PRIVATE);
+        int sortBy = sharedPref.getInt(SORT_CREATION_KEY, SORT_BY_POPULAR);
+        Log.d("Sort By", "value of sorting : " + sortBy);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(SORT_CREATION_KEY, sortBy);
+        if (sortBy == R.id.my_favourite_action) {
+            setTitle(getResources().getString(R.string.my_favourite));
+            editor.putInt(SORT_CREATION_KEY, sortBy);
+            FavouriteMoviesLoader loader = new FavouriteMoviesLoader(MainActivity.this, getLoaderManager());
+        } else if (sortBy == R.id.popular_action){
+            setTitle(getResources().getString(R.string.popular) + " Movies");
+            getApiResponse(sortBy);
+        } else if (sortBy == R.id.top_rated_action){
+            setTitle(getResources().getString(R.string.top_rated) + " Movies");
+            getApiResponse(sortBy);
+        }
     }
 
     @Override
@@ -69,25 +91,31 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        sharedPref = getSharedPreferences(SORT_CREATION_FILE, this.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        int itemId = item.getItemId();
         if (item.getItemId() == R.id.popular_action) {
             setTitle(getResources().getString(R.string.popular) + " Movies");
-            getApiResponse(item.getItemId());
+            editor.putInt(SORT_CREATION_KEY, itemId);
+            getApiResponse(itemId);
         } else if (item.getItemId() == R.id.top_rated_action) {
             setTitle(getResources().getString(R.string.top_rated) + " Movies");
-            getApiResponse(item.getItemId());
+            editor.putInt(SORT_CREATION_KEY, itemId);
+            getApiResponse(itemId);
         } else if (item.getItemId() == R.id.my_favourite_action) {
             setTitle(getResources().getString(R.string.my_favourite));
+            editor.putInt(SORT_CREATION_KEY, itemId);
             FavouriteMoviesLoader loader = new FavouriteMoviesLoader(MainActivity.this, getLoaderManager());
         }
+        editor.commit();
         mProgressBar.setVisibility(ProgressBar.VISIBLE);
         return super.onOptionsItemSelected(item);
     }
 
+    /*  Resource : Android Working with Retrofit HTTP Library :
+     *  Link     : https://www.androidhive.info/2016/05/android-working-with-retrofit-http-library/
+     */
     public void getApiResponse(int id) {
-
-        /*  Resource : Android Working with Retrofit HTTP Library :
-         *  Link     : https://www.androidhive.info/2016/05/android-working-with-retrofit-http-library/
-         */
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<MovieResponse> call = null;
         if (id == R.id.popular_action) {
@@ -136,6 +164,14 @@ public class MainActivity extends AppCompatActivity {
 
     public String getGeneralError() {
         return getResources().getString(R.string.general_error);
+    }
+
+    public static int calculateNoOfColumns(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        int scalingFactor = 180;
+        int noOfColumns = (int) (dpWidth / scalingFactor);
+        return noOfColumns;
     }
 
 }

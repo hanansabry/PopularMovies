@@ -101,7 +101,7 @@ public class DetailActivity extends AppCompatActivity {
         getMovieReviewsResponse(movie.getId());
 
         //fill trailers recycler view
-        LinearLayoutManager trailersLayout = new LinearLayoutManager(this);
+        LinearLayoutManager trailersLayout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mTrailersRecyclerView.setLayoutManager(trailersLayout);
 
         //fill reviews recycler view
@@ -244,7 +244,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void saveFavourtieValue(boolean favourite) {
-        SharedPreferences sharedPref = this.getSharedPreferences(
+        SharedPreferences sharedPref = getSharedPreferences(
                 getResources().getString(R.string.preference_file_key), this.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(getResources().getString(R.string.favourite) + "_" + movie.getId()
